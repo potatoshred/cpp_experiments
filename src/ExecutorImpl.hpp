@@ -25,6 +25,8 @@ namespace adas
     public:
         // 查询当前汽车姿态，是父类抽象方法Query的具体实现
         Pose Query() const noexcept override;
+        // 第二阶段新增加的虚函数，执行用字符串表示的指令
+        virtual void Execute(const std::string &commands) noexcept override;
     };
 
 } // namespace adas
