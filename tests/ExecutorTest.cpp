@@ -126,4 +126,49 @@ namespace adas
         const Pose target = {0, 0, 'E'};
         ASSERT_EQ(executor->Query(), target);
     }
+
+    // 测试用例11：右转指令R：当面向E时，返回S
+    TEST(ExecutorTest, should_return_facing_S_given_command_is_R_and_facing_is_E)
+    {
+        // given
+        std::unique_ptr<Executor> executor(Executor::NewExecutor({0, 0, 'E'}));
+        // when
+        executor->Execute("R");
+        // then
+        const Pose target = {0, 0, 'S'};
+        ASSERT_EQ(executor->Query(), target);
+    }
+    // 测试用例12：右转指令R：当面向S时，返回W
+    TEST(ExecutorTest, should_return_facing_W_given_command_is_R_and_facing_is_S)
+    {
+        // given
+        std::unique_ptr<Executor> executor(Executor::NewExecutor({0, 0, 'S'}));
+        // when
+        executor->Execute("R");
+        // then
+        const Pose target = {0, 0, 'W'};
+        ASSERT_EQ(executor->Query(), target);
+    }
+    // 测试用例13：右转指令R：当面向W时，返回N
+    TEST(ExecutorTest, should_return_facing_N_given_command_is_R_and_facing_is_W)
+    {
+        // given
+        std::unique_ptr<Executor> executor(Executor::NewExecutor({0, 0, 'W'}));
+        // when
+        executor->Execute("R");
+        // then
+        const Pose target = {0, 0, 'N'};
+        ASSERT_EQ(executor->Query(), target);
+    }
+    // 测试用例14：右转指令R：当面向N时，返回E
+    TEST(ExecutorTest, should_return_facing_E_given_command_is_R_and_facing_is_N)
+    {
+        // given
+        std::unique_ptr<Executor> executor(Executor::NewExecutor({0, 0, 'N'}));
+        // when
+        executor->Execute("R");
+        // then
+        const Pose target = {0, 0, 'E'};
+        ASSERT_EQ(executor->Query(), target);
+    }
 } // namespace adas
