@@ -19,6 +19,15 @@ namespace adas
             }
         };
 
+        class TurnLeftCommand final
+        {
+        public:
+            void DoOperate(ExecutorImpl &executor) const noexcept
+            {
+                executor.TurnLeft();
+            }
+        };
+
     private:
         Pose pose;
         bool isFast;
