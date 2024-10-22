@@ -15,6 +15,7 @@ namespace adas
     private:
         void Move() noexcept;
         void TurnLeft() noexcept;
+        void TurnRight() noexcept;
 
     public:
         // 构造函数
