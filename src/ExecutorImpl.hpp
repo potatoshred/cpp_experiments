@@ -6,8 +6,19 @@
 namespace adas
 {
     /* Executor的具体实现 */
-    class ExecutorImpl : public Executor
+    class ExecutorImpl final : public Executor
     {
+
+    private:
+        class MoveCommand final
+        {
+        public:
+            void DoOperate(ExecutorImpl &executor) const noexcept
+            {
+                executor.Move();
+            }
+        };
+
     private:
         Pose pose;
         bool isFast;
