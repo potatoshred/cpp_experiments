@@ -10,6 +10,10 @@ namespace adas
     {
     private:
         Pose pose;
+        bool isFast;
+
+    private:
+        void Move() noexcept;
 
     public:
         // 构造函数
