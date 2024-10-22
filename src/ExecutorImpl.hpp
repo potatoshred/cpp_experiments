@@ -16,12 +16,23 @@ namespace adas
             virtual ~ICommand() = default;
             virtual void DoOperate(ExecutorImpl &executor) const noexcept = 0;
         };
+        class FastCommand final : public ICommand
+        {
+        public:
+            void DoOperate(ExecutorImpl &executor) const noexcept override
+            {
+                executor.Fast();
+            }
+        };
 
         class MoveCommand final : public ICommand
         {
         public:
             void DoOperate(ExecutorImpl &executor) const noexcept override
             {
+                if (executor.isFast()) {
+                    executor.Move();
+                }
                 executor.Move();
             }
         };
@@ -31,6 +42,9 @@ namespace adas
         public:
             void DoOperate(ExecutorImpl &executor) const noexcept override
             {
+                if (executor.isFast()) {
+                    executor.Move();
+                }
                 executor.TurnLeft();
             }
         };
@@ -39,15 +53,20 @@ namespace adas
         public:
             void DoOperate(ExecutorImpl &executor) const noexcept override
             {
+                if (executor.isFast()) {
+                    executor.Move();
+                }
                 executor.TurnRight();
             }
         };
 
     private:
         Pose pose;
-        bool isFast;
+        bool fast{false};
 
     private:
+        bool isFast() const noexcept;
+        void Fast() noexcept;
         void Move() noexcept;
         void TurnLeft() noexcept;
         void TurnRight() noexcept;
