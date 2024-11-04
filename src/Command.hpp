@@ -24,7 +24,7 @@ namespace adas
     public:
         void DoOperate(PoseHandler &poseHandler) const noexcept override
         {
-            if (poseHandler.isFast()) {
+            if (poseHandler.IsFast()) {
                 poseHandler.Move();
             }
             poseHandler.Move();
@@ -36,7 +36,7 @@ namespace adas
     public:
         void DoOperate(PoseHandler &poseHandler) const noexcept override
         {
-            if (poseHandler.isFast()) {
+            if (poseHandler.IsFast()) {
                 poseHandler.Move();
             }
             poseHandler.TurnLeft();
@@ -47,7 +47,7 @@ namespace adas
     public:
         void DoOperate(PoseHandler &poseHandler) const noexcept override
         {
-            if (poseHandler.isFast()) {
+            if (poseHandler.IsFast()) {
                 poseHandler.Move();
             }
             poseHandler.TurnRight();

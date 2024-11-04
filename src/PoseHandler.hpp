@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Direction.hpp"
 #include "Executor.hpp"
 
 namespace adas
@@ -7,8 +8,9 @@ namespace adas
     class PoseHandler final
     {
     private:
-        Pose pose;
+        Point point;
         bool fast{false};
+        const Direction *facing;
 
     public:
         PoseHandler(const Pose &pose) noexcept;
@@ -17,7 +19,7 @@ namespace adas
         ~PoseHandler();
 
     public:
-        bool isFast() const noexcept;
+        bool IsFast() const noexcept;
         void Fast() noexcept;
         void Move() noexcept;
         void TurnLeft() noexcept;
