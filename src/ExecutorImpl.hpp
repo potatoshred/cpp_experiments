@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Executor.hpp"
+#include "PoseHandler.hpp"
 #include <string>
 
 namespace adas
@@ -10,15 +11,7 @@ namespace adas
     {
 
     private:
-        Pose pose;
-        bool fast{false};
-
-    public:
-        bool isFast() const noexcept;
-        void Fast() noexcept;
-        void Move() noexcept;
-        void TurnLeft() noexcept;
-        void TurnRight() noexcept;
+        PoseHandler poseHandler;
 
     public:
         // 构造函数

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ExecutorImpl.hpp"
+#include "PoseHandler.hpp"
 
 namespace adas
 {
@@ -8,49 +8,49 @@ namespace adas
     {
     public:
         virtual ~ICommand() = default;
-        virtual void DoOperate(ExecutorImpl &executor) const noexcept = 0;
+        virtual void DoOperate(PoseHandler &poseHandler) const noexcept = 0;
     };
     class FastCommand final : public ICommand
     {
     public:
-        void DoOperate(ExecutorImpl &executor) const noexcept override
+        void DoOperate(PoseHandler &poseHandler) const noexcept override
         {
-            executor.Fast();
+            poseHandler.Fast();
         }
     };
 
     class MoveCommand final : public ICommand
     {
     public:
-        void DoOperate(ExecutorImpl &executor) const noexcept override
+        void DoOperate(PoseHandler &poseHandler) const noexcept override
         {
-            if (executor.isFast()) {
-                executor.Move();
+            if (poseHandler.isFast()) {
+                poseHandler.Move();
             }
-            executor.Move();
+            poseHandler.Move();
         }
     };
 
     class TurnLeftCommand final : public ICommand
     {
     public:
-        void DoOperate(ExecutorImpl &executor) const noexcept override
+        void DoOperate(PoseHandler &poseHandler) const noexcept override
         {
-            if (executor.isFast()) {
-                executor.Move();
+            if (poseHandler.isFast()) {
+                poseHandler.Move();
             }
-            executor.TurnLeft();
+            poseHandler.TurnLeft();
         }
     };
     class TurnRightCommand final : public ICommand
     {
     public:
-        void DoOperate(ExecutorImpl &executor) const noexcept override
+        void DoOperate(PoseHandler &poseHandler) const noexcept override
         {
-            if (executor.isFast()) {
-                executor.Move();
+            if (poseHandler.isFast()) {
+                poseHandler.Move();
             }
-            executor.TurnRight();
+            poseHandler.TurnRight();
         }
     };
 }
