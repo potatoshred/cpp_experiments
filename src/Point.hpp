@@ -13,6 +13,7 @@ namespace adas
         Point(const Point &rhs) noexcept;
         Point &operator=(const Point &rhs) noexcept;
         Point &operator+=(const Point &rhs) noexcept;
+        Point &operator-=(const Point &rhs) noexcept;
 
     public:
         int GetX() const noexcept;

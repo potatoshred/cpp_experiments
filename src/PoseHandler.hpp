@@ -10,6 +10,7 @@ namespace adas
     private:
         Point point;
         bool fast{false};
+        bool reverse{false};
         const Direction *facing;
 
     public:
@@ -19,9 +20,13 @@ namespace adas
         ~PoseHandler();
 
     public:
+        bool IsReverse() const noexcept;
         bool IsFast() const noexcept;
+        void Reverse() noexcept;
         void Fast() noexcept;
-        void Move() noexcept;
+
+        void Forward() noexcept;
+        void Backward() noexcept;
         void TurnLeft() noexcept;
         void TurnRight() noexcept;
         Pose Query() const noexcept;

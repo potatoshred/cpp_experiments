@@ -5,6 +5,14 @@ namespace adas
     PoseHandler::~PoseHandler() {}
     PoseHandler::PoseHandler(const Pose &pose) noexcept : point(pose.x, pose.y), facing(&Direction::GetDirection(pose.heading)) {}
 
+    bool PoseHandler::IsReverse() const noexcept
+    {
+        return reverse;
+    }
+    void PoseHandler::Reverse() noexcept
+    {
+        reverse = !reverse;
+    }
     bool PoseHandler::IsFast() const noexcept
     {
         return fast;
@@ -19,9 +27,14 @@ namespace adas
         return {point.GetX(), point.GetY(), facing->GetHeading()};
     }
 
-    void PoseHandler::Move() noexcept
+    void PoseHandler::Forward() noexcept
     {
         point += facing->Move();
+    }
+
+    void PoseHandler::Backward() noexcept
+    {
+        point -= facing->Move();
     }
 
     void PoseHandler::TurnLeft() noexcept
