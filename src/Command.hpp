@@ -92,4 +92,27 @@ namespace adas
             return actionGroup;
         };
     };
+
+    class TurnRoundCommand final
+    {
+    public:
+        ActionGroup operator()(PoseHandler &poseHandler) const noexcept
+        {
+            ActionGroup actionGroup;
+            if (poseHandler.IsReverse()) {
+                // do nothing
+            } else {
+                const auto actionF = ActionType::FORWARD_1_STEP_ACTION;
+                const auto actionL = ActionType::TURNLEFT_ACTION;
+                if (poseHandler.IsFast()) {
+                    actionGroup.PushAction(actionF);
+                }
+                actionGroup.PushAction(actionL);
+                actionGroup.PushAction(actionF);
+                actionGroup.PushAction(actionL);
+            }
+
+            return actionGroup;
+        };
+    };
 }
