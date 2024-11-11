@@ -25,7 +25,7 @@ namespace adas
     {
         const auto cmders = Singleton<CmderFactory>::Instance().GetCmders(commands);
         std::for_each(cmders.begin(), cmders.end(),
-                      [this](const Cmder &cmder) noexcept { cmder(poseHandler); });
+                      [this](const Cmder &cmder) noexcept { cmder(poseHandler).DoOperate(poseHandler); });
     };
 
 } // namespace adas
