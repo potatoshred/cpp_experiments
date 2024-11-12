@@ -2,6 +2,12 @@
 #include <string>
 namespace adas
 {
+    enum class ExecutorType {
+        NORMAL,
+        SPORTS_CAR,
+        BUS,
+    };
+
     /* 汽车姿态 */
     struct Pose {
         int x;
@@ -13,7 +19,8 @@ namespace adas
     class Executor
     {
     public:
-        static Executor *NewExecutor(const Pose &pose = {0, 0, 'N'}) noexcept;
+        static Executor *NewExecutor(const Pose &pose = {0, 0, 'N'},
+                                     const ExecutorType executerType = ExecutorType::NORMAL) noexcept;
 
     public:
         Executor() = default;
