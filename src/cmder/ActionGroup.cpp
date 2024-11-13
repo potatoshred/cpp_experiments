@@ -75,6 +75,14 @@ namespace adas
 
     ActionGroup::ActionGroup(const std::list<ActionType> &actions) noexcept : actions(actions) {}
 
+    ActionGroup &ActionGroup::operator+=(const ActionGroup &rhs) noexcept
+    {
+        for (auto it : rhs.actions) {
+            actions.push_back(it);
+        };
+
+        return *this;
+    }
     void ActionGroup::PushAction(const ActionType ActionType) noexcept
     {
         actions.push_back(ActionType);

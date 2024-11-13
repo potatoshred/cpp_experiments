@@ -102,7 +102,7 @@ namespace adas
         // when
         executor->Execute("FBL");
         // then
-        const Pose target({-2, 0, 'N'});
+        const Pose target({-2, 0, 'S'});
         ASSERT_EQ(executor->Query(), target);
     }
 

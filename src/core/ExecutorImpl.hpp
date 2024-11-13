@@ -2,6 +2,9 @@
 
 #include "Executor.hpp"
 #include "PoseHandler.hpp"
+#include "cmder/CmderOrchestrator.hpp"
+
+#include <memory>
 #include <string>
 
 namespace adas
@@ -12,10 +15,11 @@ namespace adas
 
     private:
         PoseHandler poseHandler;
+        std::unique_ptr<CmderOrchestrator> orchestrator;
 
     public:
         // 构造函数
-        explicit ExecutorImpl(const Pose &pose) noexcept;
+        explicit ExecutorImpl(const Pose &pose, CmderOrchestrator *orchestrator) noexcept;
         // 默认析构函数
         ~ExecutorImpl() noexcept = default;
 
